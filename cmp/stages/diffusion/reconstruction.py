@@ -491,7 +491,7 @@ def create_mrtrix_recon_flow(config):
     if config.local_model:
         # Compute single fiber voxel mask
         mrtrix_erode = pe.Node(interface=mrtrix.Erode(),name="mrtrix_erode")
-        mrtrix_erode.inputs.number_of_passes = 3
+        mrtrix_erode.inputs.number_of_passes = 1
         mrtrix_mul_eroded_FA = pe.Node(interface=MRtrix_mul(),name='mrtrix_mul_eroded_FA')
         mrtrix_mul_eroded_FA.inputs.out_filename = "diffusion_resampled_tensor_FA_masked.mif"
         mrtrix_thr_FA = pe.Node(interface=mrtrix.Threshold(),name='mrtrix_thr')
